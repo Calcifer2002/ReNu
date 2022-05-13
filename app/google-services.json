@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "478924071511",
+    "firebase_url": "https://renu-22cf0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "renu-22cf0",
+    "storage_bucket": "renu-22cf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478924071511:android:c9317d8936d52b7ebb7912",
+        "android_client_info": {
+          "package_name": "com.example.renu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478924071511-bq7mgsq622bju2amc72eos7kl31bsiod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhnVeFiOD-6-BX8YuC3TMEnZfscBFl3PY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478924071511-bq7mgsq622bju2amc72eos7kl31bsiod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
