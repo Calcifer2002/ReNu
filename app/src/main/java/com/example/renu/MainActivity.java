@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     public TextView Moist;
     public TextView Temp;
+    Button buttong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        buttong = findViewById(R.id.button);
         Temp = findViewById(R.id.temp);
         Moist = findViewById(R.id.moist);
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
@@ -58,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
            }
        });
-
+   buttong.setOnClickListener(new View.OnClickListener() {
+       @Override
+       public void onClick(View view) {
+           startActivity(new Intent(MainActivity.this, Guide.class));
+       }
+   });
 
     }
 }
