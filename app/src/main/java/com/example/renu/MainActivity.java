@@ -7,14 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     public TextView Moist;
     public TextView Temp;
-    Button buttong;
+   ImageButton buttonGuide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        buttong = findViewById(R.id.button);
+        buttonGuide = findViewById(R.id.buttonG);
         Temp = findViewById(R.id.temp);
         Moist = findViewById(R.id.moist);
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
@@ -61,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-
+    buttonGuide.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(MainActivity.this, Guidelines.class));
+        }
+    });
 
     }
 }
