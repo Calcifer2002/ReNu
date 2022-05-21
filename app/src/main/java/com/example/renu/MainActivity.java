@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView Moist;
     public TextView Temp;
     public TextView Time;
-   ImageButton buttonGuide;
+    ImageButton buttonGuide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,34 +34,49 @@ public class MainActivity extends AppCompatActivity {
         Moist = findViewById(R.id.moist);
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         DatabaseReference renuRef = db.child("sensor");
-       renuRef.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot snapshot) {
+        renuRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                   String key1 = snapshot.child("Key 1").getValue(String.class);
-                   String t = key1.split("=")[1];
-                   String time = key1.split("=")[3];
-                   String moisturetime = key1.split("=")[2];
-                   String moisture = moisturetime.split(" ")[0];
+                String key1 = snapshot.child("Key 1").getValue(String.class);
+                String t = key1.split("=")[1];
+                String time = key1.split("=")[3];
+                String moisturetime = key1.split("=")[2];
+                String moisture = moisturetime.split(" ")[0];
 
-                   String temperature = t.split(" ")[0];
+                String temperature = t.split(" ")[0];
 
-                   Log.d("TAG", key1);
-                   String finaltime = "Last updated" + time;
-                   Time.setText(finaltime);
-                   Temp.setText(temperature);
-                   Moist.setText(moisture);
+                Log.d("TAG", key1);
+                String finaltime = "Last updated" + time;
+                Time.setText(finaltime);
+                Temp.setText(temperature);
+                Moist.setText(moisture);
+                String notifTemp = temperature.split("\\*")[0];
+                String notifMoisture = moisture.split("\\*")[0];
+                int nM = Integer.parseInt(notifMoisture);
+                int nT= Integer.parseInt(notifTemp);
+                sendNotif(nM, nT);
 
-               }
+            }
+
+            private void sendNotif(int moisture, int temp) {
+                if (moisture <= 40 || moisture >= 60){
+
+                }
+                if (temp <= 50 || temp >= 70){
+
+                }
+            }
 
 
+            @Override
+        public void onCancelled (@NonNull DatabaseError error){
 
-           @Override
-           public void onCancelled(@NonNull DatabaseError error) {
+        }
 
-           }
-       });
+
+});
 
     buttonGuide.setOnClickListener(new View.OnClickListener() {
         @Override
