@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         Temp = findViewById(R.id.temp);
         Moist = findViewById(R.id.moist);
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference renuRef = db.child("Renu");
+        DatabaseReference renuRef = db.child("sensor");
        renuRef.addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                   String key1 = snapshot.child("Key1").getValue(String.class);
+                   String key1 = snapshot.child("Key 1").getValue(String.class);
                    String t = key1.split("=")[1];
                    String moisture = key1.split("=")[2];
                    String temperature = t.split(" ")[0];
