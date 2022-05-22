@@ -2,12 +2,18 @@ package com.example.renu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public TextView Moist;
     public TextView Temp;
     public TextView Time;
+    public TextView Status;
+    ImageView Istatus;
     ImageButton buttonGuide;
 
     @Override
@@ -32,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         Temp = findViewById(R.id.temp);
         Time = findViewById(R.id.time);
         Moist = findViewById(R.id.moist);
+        Status = findViewById(R.id.status);
+        Istatus = findViewById(R.id.statusI);
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         DatabaseReference renuRef = db.child("sensor");
         renuRef.addValueEventListener(new ValueEventListener() {
@@ -52,23 +62,38 @@ public class MainActivity extends AppCompatActivity {
                 Time.setText(finaltime);
                 Temp.setText(temperature);
                 Moist.setText(moisture);
-                String notifTemp = temperature.split("\\*")[0];
-                String notifMoisture = moisture.split("\\*")[0];
-                int nM = Integer.parseInt(notifMoisture);
-                int nT= Integer.parseInt(notifTemp);
-                sendNotif(nM, nT);
+                String notifTemp = temperature.split("\\.")[0];
+                String notifMoisture = moisture.split("\\.")[0];
+
+               int nM = Integer.parseInt(notifMoisture);
+
+               int nT= Integer.parseInt(notifTemp);
+               sendNotif(nM, nT);
 
             }
 
             private void sendNotif(int moisture, int temp) {
-                if (moisture <= 40 || moisture >= 60){
-
+                if (moisture <= 40) {
+                     Status.setText("Its too dry in here, please add more water!");
+                     Istatus.setImageResource(R.drawable.ic_baseline_flare_24);
+                     Status.setTextColor(Color.RED);
                 }
-                if (temp <= 50 || temp >= 70){
-
+                if (moisture >= 60) {
+                    Status.setText("Its too wet in here,\n   please turn me!");
+                    Status.setTextColor(Color.BLUE);
+                    Istatus.setImageResource(R.drawable.ic_baseline_waves_24);
+                }
+                if (temp <= 50) {
+                    Status.setText("Its too cold in here,\n   please turn me!");
+                    Istatus.setImageResource(R.drawable.ic_baseline_ac_unit_24);
+                    Status.setTextColor(Color.BLUE);
+                }
+                if (temp >= 70) {
+                    Status.setText("Its too warm in here,\n   please turn me!");
+                    Istatus.setImageResource(R.drawable.ic_baseline_local_fire_department_24);
+                    Status.setTextColor(Color.RED);
                 }
             }
-
 
             @Override
         public void onCancelled (@NonNull DatabaseError error){
@@ -86,4 +111,8 @@ public class MainActivity extends AppCompatActivity {
     });
 
     }
-}
+
+
+    }
+
+
