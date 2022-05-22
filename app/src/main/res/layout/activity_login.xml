@@ -46,34 +46,40 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/purple_200"
+            android:textColorHint="@color/purple_200">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginEmail"
                 android:layout_width="335dp"
-                android:layout_height="57dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center"
                 android:background="@drawable/login_boxes"
                 android:fontFamily="@font/open_sans_italic"
                 android:hint="Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
 
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/purple_200"
+            android:textColorHint="@color/purple_200"
             android:layout_width="335dp"
             android:layout_height="57dp"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:background="@drawable/login_boxes">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPass"
+                android:background="@drawable/login_boxes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
