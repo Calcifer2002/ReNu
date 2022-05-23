@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                      Status.setTextColor(Color.RED);
                 }
                 if (moisture >= 60) {
-                    Status.setText("Its too wet in here,\n   please turn me!");
+                    Status.setText("Its too wet in here,\n   please add more greens/browns!");
                     Status.setTextColor(Color.BLUE);
                     Istatus.setImageResource(R.drawable.ic_baseline_waves_24);
                 }
