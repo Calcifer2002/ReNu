@@ -126,8 +126,8 @@
 
     <TextView
         android:id="@+id/status"
-        android:layout_width="144dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_condensed_bold"
         android:text="Its perfect here!"
         android:textColor="#0B6623"
@@ -144,7 +144,7 @@
         android:layout_width="68dp"
         android:layout_height="51dp"
 
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="128dp"
         app:layout_constraintBottom_toBottomOf="@+id/status"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greeting"
