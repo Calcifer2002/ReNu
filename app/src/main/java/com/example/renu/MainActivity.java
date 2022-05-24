@@ -16,6 +16,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,20 +33,36 @@ public class MainActivity extends AppCompatActivity {
     public TextView Time;
     public TextView Status;
     ImageView Istatus;
+    public TextView greeting;
     ImageButton buttonGuide;
-
+    TextView user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonGuide = findViewById(R.id.buttonG);
         Temp = findViewById(R.id.temp);
+        greeting = findViewById(R.id.greeting);
         Time = findViewById(R.id.time);
         Moist = findViewById(R.id.moist);
         Status = findViewById(R.id.status);
         Istatus = findViewById(R.id.statusI);
+
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         DatabaseReference renuRef = db.child("sensor");
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        Log.d("aa", "idk");
+        String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference idRef = db.child("users").child(currentuser);
+
+      idRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+         @Override
+       public void onComplete(@NonNull Task<DataSnapshot> task) {
+               DataSnapshot snapshot = task.getResult();
+              greeting.setText("Hello " + snapshot.child("username").getValue(String.class) +"!");
+         }
+});
         renuRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
