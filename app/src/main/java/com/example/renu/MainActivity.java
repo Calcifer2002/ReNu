@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Istatus = findViewById(R.id.statusI);
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference renuRef = db.child("sensor");
+        DatabaseReference renuRef = db.child("sensor-2");
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         Log.d("aa", "idk");
@@ -68,13 +68,12 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                String key1 = snapshot.child("Key 1").getValue(String.class);
-                String t = key1.split("=")[1];
-                String time = key1.split("=")[3];
-                String moisturetime = key1.split("=")[2];
-                String moisture = moisturetime.split(" ")[0];
+                String key1 = snapshot.child("Data").getValue(String.class);
 
-                String temperature = t.split(" ")[0];
+
+                String temperature = key1.split(" ")[0] + key1.split(" ")[1];
+                String moisture = key1.split(" ")[2] + key1.split(" ")[3];
+                String time = key1.split(" ")[4];
 
                 Log.d("TAG", key1);
                 String finaltime = "Last updated" + time;
