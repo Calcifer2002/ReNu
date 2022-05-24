@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    ImageButton back;
     public TextView Moist;
     public TextView Temp;
     public TextView Time;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonGuide = findViewById(R.id.buttonG);
+        back = findViewById(R.id.back);
         Temp = findViewById(R.id.temp);
         greeting = findViewById(R.id.greeting);
         Time = findViewById(R.id.time);
@@ -125,6 +128,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(MainActivity.this, Guidelines.class));
+        }
+    });
+    back.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
     });
 

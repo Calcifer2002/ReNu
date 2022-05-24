@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/bin" />
 
     <ImageButton
-        android:id="@+id/button3"
+        android:id="@+id/back"
         android:layout_width="83dp"
         android:layout_height="78dp"
         android:backgroundTint="#81b673"
