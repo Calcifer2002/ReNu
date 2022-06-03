@@ -79,27 +79,31 @@ public class MainActivity extends AppCompatActivity {
                 String time = key1.split(" ")[4];
 
                 Log.d("TAG", key1);
-                String finaltime = "Last updated" + time;
+                String finaltime = "Last updated " + time;
                 Time.setText(finaltime);
                 Temp.setText(temperature);
                 Moist.setText(moisture);
                 String notifTemp = temperature.split("\\.")[0];
                 String notifMoisture = moisture.split("\\.")[0];
-
+                Log.d("TAG", notifTemp);
                int nM = Integer.parseInt(notifMoisture);
 
-               int nT= Integer.parseInt(notifTemp);
-               sendNotif(nM, nT);
+              int nT= Integer.parseInt(notifTemp);
+              sendNotif(nM, nT);
 
             }
 
             private void sendNotif(int moisture, int temp) {
                 if (moisture <= 40) {
-                     Status.setText("Its too dry in here, please add more water!");
+                     Status.setText("Its too dry in here,\n please add more water!");
                      Istatus.setImageResource(R.drawable.ic_baseline_flare_24);
                      Status.setTextColor(Color.RED);
                 }
                 if (moisture >= 60) {
+                    Status.setText("Its too wet in here, \n please add more greens/browns!");
+                    Status.setTextColor(Color.BLUE);
+                    Istatus.setImageResource(R.drawable.ic_baseline_waves_24);
+                } if (temp <= 60 && temp >= 70) {
                     Status.setText("Its too wet in here,\n   please add more greens/browns!");
                     Status.setTextColor(Color.BLUE);
                     Istatus.setImageResource(R.drawable.ic_baseline_waves_24);

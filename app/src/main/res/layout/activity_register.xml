@@ -86,6 +86,7 @@
                 android:hint="Username"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_width="match_parent"
@@ -107,6 +108,38 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:fontFamily="@font/open_sans_condensed_bold"
+            android:text="Do you own a Renu composting assistant?"
+            android:textSize="20dp"></TextView>
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:id="@+id/my_health_status_check_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0">
+
+            <RadioButton
+                android:id="@+id/radio_yes_my_health_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:text="Yes" />
+
+            <RadioButton
+                android:id="@+id/radio_no_my_health_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No" />
+
+        </RadioGroup>
 
 
         <com.google.android.material.button.MaterialButton
