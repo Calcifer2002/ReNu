@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,14 +31,14 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText etRegUser;
     TextView tvLoginHere;
     Button btnRegister;
-
+RadioButton yes;
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
 
     // creating a variable for our Database
     // Reference for Firebase.
     DatabaseReference databaseReference;
-
+    RadioGroup radioGroup;
     // creating a variable for
     // our object class
     UserInfo userInfo;
@@ -49,6 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
         etRegPassword = findViewById(R.id.etRegPass);
         tvLoginHere = findViewById(R.id.tvLoginHere);
         btnRegister = findViewById(R.id.btnRegister);
+        yes = findViewById(R.id.yes);
+        radioGroup = (RadioGroup)findViewById(R.id.my__status);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         userInfo = new UserInfo();
@@ -68,7 +72,9 @@ public class RegisterActivity extends AppCompatActivity {
         String password = etRegPassword.getText().toString();
         String name = etRegUser.getText().toString();
         String status = "one";
+        if (yes.isChecked()){
 
+        }
         if (TextUtils.isEmpty(email)){
             etRegEmail.setError("Email cannot be empty");
             etRegEmail.requestFocus();

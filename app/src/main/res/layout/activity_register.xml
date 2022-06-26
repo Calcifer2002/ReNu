@@ -17,6 +17,8 @@
         android:layout_marginTop="25dp"
         android:orientation="vertical">
 
+
+
         <ImageView
             android:layout_width="200dip"
             android:layout_height="200dip"
@@ -119,26 +121,26 @@
 
         <RadioGroup
             android:orientation="horizontal"
-            android:id="@+id/my_health_status_check_group"
+            android:id="@+id/my__status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="0">
 
             <RadioButton
-                android:id="@+id/radio_yes_my_health_info"
+                android:id="@+id/yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:text="Yes" />
-
             <RadioButton
-                android:id="@+id/radio_no_my_health_info"
+                android:id="@+id/no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
                 android:text="No" />
-
         </RadioGroup>
 
 
